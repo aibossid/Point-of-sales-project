@@ -40,12 +40,12 @@ export default function Layout({ children, cartAside }) {
           >
             Inventory
           </a>
-          <a
-            href="#"
+          <NavLink
+            to={"/report"}
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
           >
             Report
-          </a>
+          </NavLink>
           <a
             href="#"
             className="block py-2 px-3 rounded hover:bg-green-100 transition"

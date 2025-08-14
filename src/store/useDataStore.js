@@ -8,6 +8,8 @@ export const useDataStore = create(
       product: [],
       cart: [],
       searchKeyword: "",
+      report: [],
+      deleteReport: [],
 
       getProduct: async () => {
         try {
@@ -72,6 +74,14 @@ export const useDataStore = create(
             cart: state.cart.map((item) =>
               item.id === id ? { ...item, qty: qty > 0 ? qty : "" } : item
             ),
+          };
+        });
+      },
+
+      sendReport: (data) => {
+        set((state) => {
+          return {
+            report: [...state.report, data],
           };
         });
       },

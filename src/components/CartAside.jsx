@@ -3,15 +3,40 @@ import { useDataStore } from "../store/useDataStore";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 
 export default function CartAside() {
-  const { decQty, removeFromCart, clearCart, cart, addToCart, updateQty } =
-    useDataStore();
+  const {
+    decQty,
+    removeFromCart,
+    clearCart,
+    cart,
+    addToCart,
+    updateQty,
+    sendReport,
+  } = useDataStore();
   const [uangKembali, setUangKembali] = useState(0);
 
   const subTotal = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
-  const ppn = subTotal * 0.1;
+  const ppn = subTotal * 0.11;
   const total = subTotal + ppn;
   const test = uangKembali - total;
   const finals = isNaN(test) ? 0 : test;
+
+  const handlePayment = () => {
+    if (uangKembali < total) {
+      alert("UANG YANG DIBAYARKAN TIDAK CUKUP");
+      return;
+    }
+    const transaksi = {
+      id: Date.now(),
+      item: cart,
+      total: total,
+      tanggal: new Date().toLocaleString("id-ID"),
+    };
+
+    sendReport(transaksi);
+    clearCart();
+
+    alert("transaksi berhasil di simpan");
+  };
 
   return (
     <aside className="w-80 p-4 pr-6 flex flex-col gap-4">
@@ -134,7 +159,10 @@ export default function CartAside() {
       </div>
 
       {/* Tombol Proses Pembayaran */}
-      <button className="w-full bg-green-400 hover:bg-green-500 text-white py-3 rounded-xl font-medium shadow-lg shadow-green-500/60">
+      <button
+        className="w-full bg-green-400 hover:bg-green-500 text-white py-3 rounded-xl font-medium shadow-lg shadow-green-500/60"
+        onClick={handlePayment}
+      >
         PAYMENT
       </button>
     </aside>
