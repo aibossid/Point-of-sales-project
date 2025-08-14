@@ -25,19 +25,14 @@ export default function Layout({ children, cartAside }) {
             href="#"
             className="block py-2 px-3 rounded bg-green-100 text-green-700 font-medium"
           >
-            Kasir
+            Cashier
           </a>
+
           <a
             href="#"
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
           >
-            Produk
-          </a>
-          <a
-            href="#"
-            className="block py-2 px-3 rounded hover:bg-green-100 transition"
-          >
-            Penjualan
+            Sales
           </a>
           <a
             href="#"
@@ -49,13 +44,13 @@ export default function Layout({ children, cartAside }) {
             href="#"
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
           >
-            Laporan
+            Report
           </a>
           <a
             href="#"
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
           >
-            Pengaturan
+            Settings
           </a>
         </nav>
       </aside>

@@ -1,13 +1,17 @@
+import { useState } from "react";
 import { useDataStore } from "../store/useDataStore";
 import { RiDeleteBin5Fill } from "react-icons/ri";
 
 export default function CartAside() {
   const { decQty, removeFromCart, clearCart, cart, addToCart, updateQty } =
     useDataStore();
+  const [uangKembali, setUangKembali] = useState(0);
 
   const subTotal = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
   const ppn = subTotal * 0.1;
   const total = subTotal + ppn;
+  const test = total - uangKembali;
+  const finals = isNaN(test) ? 0 : test;
 
   return (
     <aside className="w-80 p-4 pr-6 flex flex-col gap-4">
@@ -97,6 +101,22 @@ export default function CartAside() {
         <div className="flex justify-between font-bold text-lg text-green-600">
           <span>Total:</span>
           <span>Rp {total.toLocaleString("id-ID")}</span>
+        </div>
+        {/* bayar kembalian */}
+        <div className="space-y-2">
+          <label className="block text-green-600 font-bold text-lg">
+            Bayar:
+          </label>
+          <input
+            type="number"
+            value={uangKembali}
+            onChange={(e) => setUangKembali(parseInt(e.target.value))}
+            className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-400"
+            placeholder="Masukkan jumlah bayar"
+          />
+          <div className="bg-green-50 p-2 rounded-lg border border-green-200 text-green-700 font-semibold">
+            Kembalian: Rp {finals?.toLocaleString("id-ID")}
+          </div>
         </div>
 
         {/* Metode Pembayaran */}
