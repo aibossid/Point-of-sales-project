@@ -10,7 +10,7 @@ export default function CartAside() {
   const subTotal = cart.reduce((acc, curr) => acc + curr.qty * curr.price, 0);
   const ppn = subTotal * 0.1;
   const total = subTotal + ppn;
-  const test = total - uangKembali;
+  const test = uangKembali - total;
   const finals = isNaN(test) ? 0 : test;
 
   return (
