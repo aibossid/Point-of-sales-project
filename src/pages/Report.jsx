@@ -5,44 +5,48 @@ export default function Report() {
   const { report, deleteReport } = useDataStore();
 
   return (
-    <div className="p-6">
+    <div className="p-6 max-w-full">
       <h1 className="text-2xl font-bold mb-4">Laporan Transaksi</h1>
-      <Link className="text-2xl font-bold mb-5" to={"/"}>
-        Back to Cashier
+      <Link
+        className="block text-lg font-bold mb-5 text-blue-600 hover:underline"
+        to={"/"}
+      >
+        ← Back to Cashier
       </Link>
+
       <div className="space-y-8">
         {report.map((data) => (
           <div
             key={data.id}
-            className="bg-white shadow-md rounded-lg p-4 border"
+            className="bg-white shadow-md rounded-lg p-4 border w-full"
           >
             {/* Info transaksi */}
-            <div className="flex justify-between mb-4 border-b pb-2">
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-3 mb-4 border-b pb-2">
               <div>
-                <p className="text-gray-600">Tanggal</p>
+                <p className="text-gray-600 text-sm">Tanggal</p>
                 <p className="font-semibold">{data.tanggal}</p>
               </div>
               <div>
-                <p className="text-gray-600">ID Transaksi</p>
+                <p className="text-gray-600 text-sm">ID Transaksi</p>
                 <p className="font-semibold">{data.id}</p>
               </div>
               <div>
-                <p className="text-gray-600">Total</p>
+                <p className="text-gray-600 text-sm">Total</p>
                 <p className="font-bold text-green-600">
                   Rp {data.total.toLocaleString("id-ID")}
                 </p>
               </div>
               <button
                 onClick={() => deleteReport(data.id)}
-                className="p-2 bg-indigo-500 text-white shadow-2xl shadow-indigo-500/60 rounded-4xl "
+                className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 w-full sm:w-auto"
               >
-                Delete Report
+                Hapus
               </button>
             </div>
 
             {/* Tabel Produk */}
             <div className="overflow-x-auto">
-              <table className="min-w-full border border-gray-200 rounded-lg">
+              <table className="min-w-full border border-gray-200 rounded-lg text-sm">
                 <thead className="bg-gray-100">
                   <tr>
                     <th className="px-4 py-2 text-left text-gray-700">
@@ -70,7 +74,7 @@ export default function Report() {
                         <img
                           src={product.image}
                           alt={product.title}
-                          className="h-12 w-12 object-contain"
+                          className="h-10 w-10 object-contain"
                         />
                       </td>
                       <td className="px-4 py-2">{product.title}</td>

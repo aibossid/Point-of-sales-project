@@ -39,11 +39,11 @@ export default function CartAside() {
   };
 
   return (
-    <aside className="w-80 p-4 pr-6 flex flex-col gap-4">
+    <aside className="w-full sm:w-80 p-4 flex flex-col gap-4">
       {/* Box Keranjang */}
-      <div className="bg-white shadow-2xl rounded-xl p-4 flex flex-col h-[55%] mr-4">
+      <div className="bg-white shadow-2xl rounded-xl p-4 flex flex-col h-[55vh] sm:h-[55%] overflow-hidden">
         {/* Header */}
-        <div className="flex justify-between items-center mb-4 mr-4">
+        <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg font-bold">Cart</h2>
           <button
             onClick={clearCart}
@@ -55,55 +55,56 @@ export default function CartAside() {
         </div>
 
         {/* List Produk */}
-        <div className="flex-1 overflow-y-auto space-y-4 pr-1 border-gray-100">
+        <div className="flex-1 overflow-y-auto space-y-4 pr-1">
           {cart.map((product) => (
             <div
               key={product.id}
-              className="flex justify-between items-center pb-3 border-b border-gray-100"
+              className="flex flex-col sm:flex-row sm:justify-between sm:items-center pb-3 border-b border-gray-100"
             >
-              <div>
+              {/* Info Produk */}
+              <div className="flex flex-col items-start sm:items-start">
                 <img
                   src={product.image}
-                  className="w-15 h-15 rounded-4xl shadow-2xl border-gray-300"
+                  className="w-16 h-16 rounded-lg shadow-md object-cover"
                 />
                 <h4 className="font-medium text-green-500">{product.title}</h4>
                 <p className="text-sm text-gray-500 font-bold">
                   Rp {product.price.toLocaleString("id-ID")} × {product.qty}
                 </p>
 
+                {/* Qty Controls */}
                 <div className="flex items-center gap-2 mt-2">
                   <button
                     onClick={() => decQty(product.id)}
-                    className="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded"
+                    className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded"
                   >
                     -
                   </button>
-                  <span className="w-6 text-center">
-                    <input
-                      className="w-12.5 h-10 ring-0 bg-gray-100 p-1 rounded-xs size-"
-                      type="number"
-                      value={product.qty}
-                      onChange={(e) =>
-                        updateQty(product.id, parseInt(e.target.value))
-                      }
-                    />
-                  </span>
+                  <input
+                    className="w-12 h-8 text-center bg-gray-100 rounded"
+                    type="number"
+                    value={product.qty}
+                    onChange={(e) =>
+                      updateQty(product.id, parseInt(e.target.value))
+                    }
+                  />
                   <button
                     onClick={() => addToCart(product, 1)}
-                    className="w-10 h-10 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded ml-6"
+                    className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded"
                   >
                     +
                   </button>
                 </div>
               </div>
 
-              <div className="text-right">
+              {/* Harga + Tombol Hapus */}
+              <div className="text-right mt-2 sm:mt-0">
                 <p className="font-semibold text-gray-800">
                   Rp {(product.qty * product.price).toLocaleString("id-ID")}
                 </p>
                 <button
                   onClick={() => removeFromCart(product.id)}
-                  className="text-white hover:text-blue-600 text-xs mt-1 border-1 p-1 rounded-2xl bg-red-500 shadow-xl shadow-red-400/50  "
+                  className="text-white text-xs mt-1 px-2 py-1 rounded bg-red-500 hover:bg-red-600"
                 >
                   Hapus
                 </button>
@@ -114,7 +115,7 @@ export default function CartAside() {
       </div>
 
       {/* Box Total */}
-      <div className="bg-white shadow-2xl rounded-xl p-4 space-y-3 mr-4 ">
+      <div className="bg-white shadow-2xl rounded-xl p-4 space-y-3">
         <div className="flex justify-between text-sm">
           <span className="font-bold">Subtotal:</span>
           <span>Rp {subTotal.toLocaleString("id-ID")}</span>
@@ -127,7 +128,8 @@ export default function CartAside() {
           <span>Total:</span>
           <span>Rp {total.toLocaleString("id-ID")}</span>
         </div>
-        {/* bayar kembalian */}
+
+        {/* Bayar + Kembalian */}
         <div className="space-y-2">
           <label className="block text-green-600 font-bold text-lg">
             Bayar:
@@ -147,11 +149,11 @@ export default function CartAside() {
         {/* Metode Pembayaran */}
         <div>
           <h3 className="font-semibold mb-2 text-sm">Metode Pembayaran</h3>
-          <div className="flex gap-2">
-            <button className="flex-1 border border-gray-300 rounded-lg py-2 hover:bg-gray-100 font-bold bg-cyan-500 shadow-lg shadow-cyan-500/50 delay-150 ease-in transition hover:scale-100">
+          <div className="flex flex-col sm:flex-row gap-2">
+            <button className="flex-1 border border-gray-300 rounded-lg py-2 bg-cyan-500 text-white shadow-lg hover:opacity-90">
               Digital
             </button>
-            <button className="flex-1 border border-gray-300 rounded-lg py-2 hover:bg-gray-100 font-bold bg-indigo-500 shadow-lg shadow-indigo-500/50 hover:scale-110 delay-300 transition ease-in">
+            <button className="flex-1 border border-gray-300 rounded-lg py-2 bg-indigo-500 text-white shadow-lg hover:opacity-90">
               Cash
             </button>
           </div>

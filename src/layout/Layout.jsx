@@ -2,13 +2,13 @@ import { Link, NavLink } from "react-router-dom";
 
 export default function Layout({ children, cartAside }) {
   return (
-    <div className="flex min-h-screen text-gray-800 ">
+    <div className="flex flex-col lg:flex-row min-h-screen text-gray-800">
       {/* Sidebar kiri */}
-      <aside className="w-64 bg-white p-4 shadow-2xl">
-        <h1 className="text-xl font-bold mb-8 text-green-500 ">
+      <aside className="w-full lg:w-64 bg-white p-4 shadow-2xl">
+        <h1 className="text-xl font-bold mb-8 text-green-500">
           POS Admin System
         </h1>
-        <nav className="space-y-2 font-bold rounded-4xl">
+        <nav className="space-y-2 font-bold">
           <a
             href="#"
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
@@ -27,7 +27,6 @@ export default function Layout({ children, cartAside }) {
           >
             Cashier
           </a>
-
           <a
             href="#"
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
@@ -50,10 +49,10 @@ export default function Layout({ children, cartAside }) {
       </aside>
 
       {/* Konten utama */}
-      <main className="flex-1 p-6">{children}</main>
+      <main className="flex-1 p-4 order-last lg:order-none">{children}</main>
 
       {/* Cart aside kanan */}
-      <aside className="w-80 p-4 shadow-2xl ml-2 rounded-lg bg-white">
+      <aside className="w-full lg:w-80 p-4 shadow-2xl rounded-lg bg-white">
         {cartAside}
       </aside>
     </div>

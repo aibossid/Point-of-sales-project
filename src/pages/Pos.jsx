@@ -20,12 +20,12 @@ export default function Pos() {
     <Layout cartAside={<CartAside />}>
       <Search />
       <div className="p-4 bg-white">
-        <h1 className="text-2xl font-bold mb-6 text-shadow-lg/30 text-center  bg-green-100 p-2 rounded-4xl shadow-xl shadow-green-200/50">
+        <h1 className="text-2xl font-bold mb-6 text-shadow-lg/30 text-center bg-green-100 p-2 rounded-4xl shadow-xl shadow-green-200/50">
           POINT OF SALES
         </h1>
 
-        {/* Grid produk */}
-        <div className="grid grid-cols-3 gap-4 ">
+        {/* Grid produk responsif */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredProduct.map((data) => (
             <ProductCard key={data.id} data={data} />
           ))}
