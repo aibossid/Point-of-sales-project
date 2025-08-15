@@ -32,12 +32,6 @@ export default function Layout({ children, cartAside }) {
             href="#"
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
           >
-            Sales
-          </a>
-          <a
-            href="#"
-            className="block py-2 px-3 rounded hover:bg-green-100 transition"
-          >
             Inventory
           </a>
           <NavLink

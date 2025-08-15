@@ -2,7 +2,7 @@ import { useDataStore } from "../store/useDataStore";
 import { Link } from "react-router-dom";
 
 export default function Report() {
-  const { report } = useDataStore();
+  const { report, deleteReport } = useDataStore();
 
   return (
     <div className="p-6">
@@ -32,6 +32,12 @@ export default function Report() {
                   Rp {data.total.toLocaleString("id-ID")}
                 </p>
               </div>
+              <button
+                onClick={() => deleteReport(data.id)}
+                className="p-2 bg-indigo-500 text-white shadow-2xl shadow-indigo-500/60 rounded-4xl "
+              >
+                Delete Report
+              </button>
             </div>
 
             {/* Tabel Produk */}
