@@ -1,8 +1,17 @@
+import { useState } from "react";
 import { useDataStore } from "../store/useDataStore";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import { format } from "date-fns";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Report() {
   const { report, deleteReport } = useDataStore();
+  const [selectDate, setSelectDate] = useState(null);
+
+  const filterReport = report.filter(
+    (data) => data.tanggal === format(selectDate, "yyyy-MM-dd")
+  );
 
   return (
     <div className="p-6 max-w-full">
@@ -14,8 +23,19 @@ export default function Report() {
         ← Back to Cashier
       </Link>
 
+      <div className="mb-6">
+        {" "}
+        <DatePicker
+          selected={selectDate}
+          onChange={(date) => setSelectDate(date)}
+          dateFormat="yyyy-MM-dd"
+          placeholderText="Pilih tanggal"
+          className="border p-2 rounded-lg"
+        />{" "}
+      </div>
+
       <div className="space-y-8">
-        {report.map((data) => (
+        {filterReport.map((data) => (
           <div
             key={data.id}
             className="bg-white shadow-md rounded-lg p-4 border w-full"

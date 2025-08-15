@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDataStore } from "../store/useDataStore";
 import { RiDeleteBin5Fill } from "react-icons/ri";
+import { format } from "date-fns";
 
 export default function CartAside() {
   const {
@@ -29,7 +30,8 @@ export default function CartAside() {
       id: Date.now(),
       item: cart,
       total: total,
-      tanggal: new Date().toLocaleString("id-ID"),
+      category: cart.map((item) => item.category),
+      tanggal: format(new Date(), "yyyy-MM-dd"),
     };
 
     sendReport(transaksi);
