@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 export default function Report() {
   const { report, deleteReport } = useDataStore();
-  const [selectDate, setSelectDate] = useState(null);
+  const [selectDate, setSelectDate] = useState(1);
 
   const filterReport = report.filter(
     (data) => data.tanggal === format(selectDate, "yyyy-MM-dd")

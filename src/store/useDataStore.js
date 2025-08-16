@@ -10,6 +10,7 @@ export const useDataStore = create(
         cart: [],
         searchKeyword: "",
         report: [],
+        stock: 0,
 
         getProduct: async () => {
           try {

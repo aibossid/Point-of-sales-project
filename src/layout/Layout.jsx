@@ -11,28 +11,16 @@ export default function Layout({ children, cartAside }) {
         <nav className="space-y-2 font-bold">
           <a
             href="#"
-            className="block py-2 px-3 rounded hover:bg-green-100 transition"
+            className="block py-2 px-3 rounded bg-green-100 text-green-700 font-medium"
           >
             Dashboard
           </a>
           <NavLink
-            to={"/cart"}
-            className="block py-2 px-3 rounded hover:bg-green-100 transition"
-          >
-            Cart
-          </NavLink>
-          <a
-            href="#"
-            className="block py-2 px-3 rounded bg-green-100 text-green-700 font-medium"
-          >
-            Cashier
-          </a>
-          <a
-            href="#"
+            to={"/inventory"}
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
           >
             Inventory
-          </a>
+          </NavLink>
           <NavLink
             to={"/report"}
             className="block py-2 px-3 rounded hover:bg-green-100 transition"
