@@ -15,12 +15,7 @@ export default function Layout({ children, cartAside }) {
           >
             Dashboard
           </a>
-          <NavLink
-            to={"/inventory"}
-            className="block py-2 px-3 rounded hover:bg-green-100 transition"
-          >
-            Inventory
-          </NavLink>
+
           <NavLink
             to={"/report"}
             className="block py-2 px-3 rounded hover:bg-green-100 transition"

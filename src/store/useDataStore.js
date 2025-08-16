@@ -9,7 +9,6 @@ export const useDataStore = create(
         product: [],
         cart: [],
         report: [],
-        stock: 0,
 
         getProduct: async () => {
           try {
