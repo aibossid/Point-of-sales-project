@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function ProductCard({ data }) {
   const { addToCart } = useDataStore();
-  const [kuantitas, setKuantitas] = useState(null);
+  const [kuantitas, setKuantitas] = useState(1);
 
   return (
     <div className=" rounded-4xl shadow-2xl p-4 flex flex-col items-center ring-0 shadow-gray-400/70 transition">

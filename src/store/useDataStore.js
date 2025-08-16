@@ -8,7 +8,6 @@ export const useDataStore = create(
       return {
         product: [],
         cart: [],
-        searchKeyword: "",
         report: [],
         stock: 0,
 

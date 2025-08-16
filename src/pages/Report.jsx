@@ -20,7 +20,7 @@ export default function Report() {
         className="block text-lg font-bold mb-5 text-blue-600 hover:underline"
         to={"/"}
       >
-        ← Back to Cashier
+        ← Back to Dashboard
       </Link>
 
       <div className="mb-6">
